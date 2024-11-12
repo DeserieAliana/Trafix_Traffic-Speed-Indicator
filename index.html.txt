@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafix Traffic Map</title>
+    <!-- Leaflet CSS for Map styling -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" />
+    <style>
+        /* Set the map height */
+        #map {
+            height: 100vh; /* Full screen height */
+        }
+        .traffic-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="traffic-info">
+        <h3>Trafix Traffic Speed Indicator</h3>
+        <p>Real-time traffic speed updates in Metro Manila</p>
+    </div>
+
+    <!-- Leaflet JS for Map functionality -->
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map with Leaflet
+        var map = L.map('map').setView([14.5995, 120.9842], 12); // Center the map on Metro Manila
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Example of placing markers to represent traffic speed
+        // You can change these locations to show specific traffic spots in Metro Manila
+        var marker1 = L.marker([14.5995, 120.9842]).addTo(map);
+        marker1.bindPopup("Traffic Speed: 40 km/h");
+
+        var marker2 = L.marker([14.5500, 121.0500]).addTo(map);
+        marker2.bindPopup("Traffic Speed: 20 km/h");
+
+        var marker3 = L.marker([14.6000, 121.1000]).addTo(map);
+        marker3.bindPopup("Traffic Speed: 10 km/h");
+
+        // You can change the markers' colors or icons based on traffic speed, for example:
+        marker1.setIcon(L.icon({ iconUrl: 'https://example.com/green-icon.png' }));
+        marker2.setIcon(L.icon({ iconUrl: 'https://example.com/yellow-icon.png' }));
+        marker3.setIcon(L.icon({ iconUrl: 'https://example.com/red-icon.png' }));
+    </script>
+</body>
+</html>
